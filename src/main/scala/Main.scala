@@ -8,9 +8,9 @@ class LPDCDecoder extends Bundle{
   val observationY = Reg(Vec(14,UInt(32.W)))
   val switchingMatrix = VecInit.fill(14,14)(32.W)
   val emissionMatrix = VecInit.fill(14,14)(32.W)
-  val randomVector = VecInit.fill(14,14)(32.W)
+  val randomVector = 
 
-  val multiply =randomVector * emissionMatrix cxbf
+  val multiply =
 }
 
 
