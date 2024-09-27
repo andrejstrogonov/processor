@@ -10,4 +10,3 @@ lazy val root = (project in file("."))
 val chiselVersion = "6.0.0"
 addCompilerPlugin("org.chipsalliance" % "chisel-plugin" % chiselVersion cross CrossVersion.full)
 libraryDependencies += "org.chipsalliance" %% "chisel" % chiselVersion
-libraryDependencies += "edu.berkeley.cs" %% "dsptools" % "1.5.6"
