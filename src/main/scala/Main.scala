@@ -10,7 +10,7 @@ class LPDCDecoder extends Bundle{
   val emissionMatrix = VecInit.fill(14,14)(32.W)
   val randomVector = VecInit.fill(14,14)(32.W)
 
-  val multiply =randomVector * emissionMatrix
+  val multiply =randomVector * emissionMatrix cxbf
 }
 
 
