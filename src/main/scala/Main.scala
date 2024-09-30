@@ -1,14 +1,30 @@
 package org.kiuru.processor
 
-import chisel3.{Bundle, Reg, UInt, Vec, VecInit, fromIntToWidth}
+import chisel3.{Bundle, Input, Module, Output, fromIntToLiteral}
 
-class LPDCDecoder extends Bundle{
-  val observation = Reg(Vec(14,UInt(32.W)))
-  val states = Reg(Vec(14,UInt(32.W)))
-  val observationY = Reg(Vec(14,UInt(32.W)))
-  val switchingMatrix = VecInit.fill(14,14)(32.W)
-  val emissionMatrix = VecInit.fill(14,14)(32.W)
-  val randomVector = VecInit.fill(14,14)(32.W)
+class MyModule extends Module{
+  val io = IO(new Bundle {
+    val inPTS = Input(1.U)
+    val inPTC = Input(1.U)
+    val inPTR = Input(1.U)
+    val inPTOE = Input(1.U)
+    val inGSK1 = Input(1.U)
+    val inGSK2 = Input(1.U)
+    val inGSK3 = Input(1.U)
+    val inGSR1 = Input(1.U)
+    val inGSR2 = Input(1.U)
+    val inGSR3 = Input(1.U)
+    val inUpper = Input(1.U)
+    val inAbove = Input(1.U)
+    val inData = Input(1.U)
+
+    val outPM = Output(1.U)
+    val outPTOE = Output(1.U)
+    val outUpper = Output(1.U)
+    val outAbove = Output(1.U)
+    
+  })
+
 
 }
 
