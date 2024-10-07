@@ -24,5 +24,6 @@ class Microcell extends Module {
 
 // Generate the Verilog code
 object MicrocellMain extends App {
-  println(ChiselStage.emitSystemVerilog(new Microcell))
+  println(ChiselStage.emitSystemVerilog(new Microcell)
+  )
 }
