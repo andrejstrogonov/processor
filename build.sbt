@@ -11,3 +11,7 @@ val chiselVersion = "6.0.0"
 addCompilerPlugin("org.chipsalliance" % "chisel-plugin" % chiselVersion cross CrossVersion.full)
 libraryDependencies += "org.chipsalliance" %% "chisel" % chiselVersion
 libraryDependencies += "edu.berkeley.cs" %% "chiseltest" % chiselVersion
+libraryDependencies ++= Seq(
+  "org.apache.derby" % "derby"          % "10.16.1.1",
+  "org.hibernate"    % "hibernate-core" % "6.5.2.Final"
+)
