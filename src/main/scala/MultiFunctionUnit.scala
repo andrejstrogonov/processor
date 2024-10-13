@@ -2,6 +2,7 @@ package org.kiuru.processor
 
 import chisel3._
 import chisel3.util._
+import _root_.circt.stage.ChiselStage
 
 class MultiFunctionUnit(width: Int) extends Module {
   val io = IO(new Bundle {
@@ -18,7 +19,7 @@ class MultiFunctionUnit(width: Int) extends Module {
   val multiply = io.in1 * io.in2
   val mac = (io.in1 * io.in2) + io.acc
   val addMul = io.in1 + (io.in2 * io.acc)
-  val circularShift = (io.in1 << io.shiftAmount) | (io.in1 >> (width.U - io.shiftAmount))
+  val circularShift = (io.in1 << io.shiftAmount)||(io.in1 >> (width.U - io.shiftAmount))
   val compare = io.in1 === io.in2
 
   // Select operation based on the operation selector
@@ -35,6 +36,6 @@ class MultiFunctionUnit(width: Int) extends Module {
 
 // Generate the Verilog code
 object MultiFunctionUnitMain extends App {
-  println(chisel3.stage.ChiselStage.emitSystemVerilog(new MultiFunctionUnit(16))) // Example with 32-bit wide inputs
+  println(ChiselStage.emitSystemVerilog(new MultiFunctionUnit(16))) // Example with 32-bit wide inputs
 }
 
