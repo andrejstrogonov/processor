@@ -1,4 +1,4 @@
-package org.kiuru.processor
+package org.kiuru.configurationalLogicBlock
 
 import chisel3.{Bundle, Input, Module, Output, fromIntToLiteral}
 

@@ -1,4 +1,4 @@
-package org.kiuru.processor
+package org.kiuru.configurationalLogicBlock
 
 import chisel3._
 import circt.stage.ChiselStage
