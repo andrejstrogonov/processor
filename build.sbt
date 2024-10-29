@@ -15,3 +15,10 @@ libraryDependencies ++= Seq(
   "org.apache.derby" % "derby"          % "10.16.1.1",
   "org.hibernate"    % "hibernate-core" % "6.5.2.Final"
 )
+// sv2chisel was first published in 2021, on new sonatype servers hence requiring non default resolvers
+resolvers ++= Seq(
+  "New Sonatype Snapshots" at "https://s01.oss.sonatype.org/content/repositories/snapshots/",
+  "New Sonatype Releases" at "https://s01.oss.sonatype.org/service/local/repositories/releases/content/",
+)
+// For simpler usage, sv2chisel minor version is aligned on chisel stack minor version: x.5.x
+libraryDependencies += "com.ovhcloud" %% "sv2chisel-helpers" % "0.5.0"
