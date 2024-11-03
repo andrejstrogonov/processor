@@ -1,8 +1,7 @@
 package org.kiuru.configurationalLogicBlock
 
-import chisel3._
-import chisel3.util._
 import _root_.circt.stage.ChiselStage
+import chisel3._
 
 class Lut4 extends Module {
   val io = IO(new Bundle {
