@@ -7,14 +7,16 @@ lazy val root = (project in file("."))
     name := "processor",
     idePackagePrefix := Some("org.kiuru.processor")
   )
+lazy val app = (project in file("app"))
+  .settings(
+    assembly / mainClass := Some("org.kiuru.processor.Main")
+  )
+
 val chiselVersion = "6.0.0"
 addCompilerPlugin("org.chipsalliance" % "chisel-plugin" % chiselVersion cross CrossVersion.full)
-libraryDependencies += "org.chipsalliance" %% "chisel" % chiselVersion
+libraryDependencies += "org.chipsalliance" %% "chisel" % "6.5.0"
 libraryDependencies += "edu.berkeley.cs" %% "chiseltest" % chiselVersion
-libraryDependencies ++= Seq(
-  "org.apache.derby" % "derby"          % "10.16.1.1",
-  "org.hibernate"    % "hibernate-core" % "6.5.2.Final"
-)
+
 // sv2chisel was first published in 2021, on new sonatype servers hence requiring non default resolvers
 resolvers ++= Seq(
   "New Sonatype Snapshots" at "https://s01.oss.sonatype.org/content/repositories/snapshots/",
