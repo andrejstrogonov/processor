@@ -1,3 +1,8 @@
+import com.typesafe.sbt.packager.docker.DockerChmodType
+import com.typesafe.sbt.packager.docker.DockerPermissionStrategy
+dockerChmodType := DockerChmodType.UserGroupWriteExecute
+dockerPermissionStrategy := DockerPermissionStrategy.CopyChown
+
 ThisBuild / version := "0.1.0-SNAPSHOT"
 
 ThisBuild / scalaVersion := "2.13.12"
@@ -7,16 +12,13 @@ lazy val root = (project in file("."))
     name := "processor",
     idePackagePrefix := Some("org.kiuru.processor")
   )
-lazy val app = (project in file("app"))
-  .settings(
-    assembly / mainClass := Some("org.kiuru.processor.Main")
-  )
-
+enablePlugins(KubeDeploymentPlugin)
+enablePlugins(KubeServicePlugin)
+enablePlugins(DockerPlugin)
 val chiselVersion = "6.0.0"
 addCompilerPlugin("org.chipsalliance" % "chisel-plugin" % chiselVersion cross CrossVersion.full)
 libraryDependencies += "org.chipsalliance" %% "chisel" % "6.5.0"
 libraryDependencies += "edu.berkeley.cs" %% "chiseltest" % chiselVersion
-
 // sv2chisel was first published in 2021, on new sonatype servers hence requiring non default resolvers
 resolvers ++= Seq(
   "New Sonatype Snapshots" at "https://s01.oss.sonatype.org/content/repositories/snapshots/",
