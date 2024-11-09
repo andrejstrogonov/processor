@@ -1,7 +1,4 @@
-import com.typesafe.sbt.packager.docker.DockerChmodType
-import com.typesafe.sbt.packager.docker.DockerPermissionStrategy
-dockerChmodType := DockerChmodType.UserGroupWriteExecute
-dockerPermissionStrategy := DockerPermissionStrategy.CopyChown
+
 
 ThisBuild / version := "0.1.0-SNAPSHOT"
 
