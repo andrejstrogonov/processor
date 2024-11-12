@@ -1,5 +1,3 @@
-
-
 ThisBuild / version := "0.1.0-SNAPSHOT"
 
 ThisBuild / scalaVersion := "2.13.12"
@@ -9,9 +7,6 @@ lazy val root = (project in file("."))
     name := "processor",
     idePackagePrefix := Some("org.kiuru.processor")
   )
-enablePlugins(KubeDeploymentPlugin)
-enablePlugins(KubeServicePlugin)
-enablePlugins(DockerPlugin)
 val chiselVersion = "6.0.0"
 addCompilerPlugin("org.chipsalliance" % "chisel-plugin" % chiselVersion cross CrossVersion.full)
 libraryDependencies += "org.chipsalliance" %% "chisel" % "6.5.0"
