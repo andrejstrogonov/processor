@@ -22,12 +22,12 @@ module DSP48E1 #(
   parameter MULT_WIDTH = AWidth + BWidth;
   parameter ALU_WIDTH = (MULT_WIDTH > CWidth ? MULT_WIDTH : CWidth) + 1;
 
-  // multiply (signed or unsigned) based on OPMODE[0]
+  // Internal signals
   wire [MULT_WIDTH-1:0] mult_signed;
   wire [MULT_WIDTH-1:0] mult_unsigned;
-  wire [ALU_WIDTH-1:0] mult_ext;
-  wire [ALU_WIDTH-1:0] c_ext;
-  wire [ALU_WIDTH-1:0] alu_res;
+  reg [ALU_WIDTH-1:0] mult_ext;  // Changed to reg
+  reg [ALU_WIDTH-1:0] c_ext;     // Changed to reg
+  reg [ALU_WIDTH-1:0] alu_res;   // Changed to reg
   reg [PWidth-1:0] pReg;
 
   // Use Verilog-style assign for compatibility
@@ -46,7 +46,9 @@ module DSP48E1 #(
   end
 
   // extend C to ALU_WIDTH
-  assign c_ext = $signed(C);
+  always @(*) begin
+    c_ext = $signed(C);
+  end
 
   // ALU operation
   always @(*) begin
