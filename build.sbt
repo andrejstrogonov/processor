@@ -18,3 +18,4 @@ resolvers ++= Seq(
 )
 // For simpler usage, sv2chisel minor version is aligned on chisel stack minor version: x.5.x
 libraryDependencies += "com.ovhcloud" %% "sv2chisel-helpers" % "0.5.0"
+libraryDependencies += "com.ovhcloud" %% "sv2chisel" % "0.1.0-SNAPSHOT"
