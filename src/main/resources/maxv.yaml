@@ -1,0 +1,35 @@
+device:
+  family: "MAX V"
+  device: "5M2210Z"
+  partNumber: null
+  clockFreqMHz: 200
+  timingAnalysis: true
+  hardwareVerification: false
+
+pins:
+  - name: "clk"
+    pin: "E1"
+    ioStandard: "3.3-V LVCMOS"
+    currentStrength: "4MA"
+  - name: "reset_n"
+    pin: "D2"
+    ioStandard: "3.3-V LVCMOS"
+    pullUp: true
+  - name: "i2c_sda"
+    pin: "F1"
+    ioStandard: "3.3-V LVCMOS"
+  - name: "i2c_scl"
+    pin: "G1"
+    ioStandard: "3.3-V LVCMOS"
+  - name: "uart_tx"
+    pin: "H1"
+    ioStandard: "3.3-V LVCMOS"
+    currentStrength: "8MA"
+  - name: "uart_rx"
+    pin: "K1"
+    ioStandard: "3.3-V LVCMOS"
+
+optimizationTechnique: "BALANCED"
+powerEstimation: true
+topModule: "top_module"
+verilogFile: "maxv_design.v"

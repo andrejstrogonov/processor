@@ -1,0 +1,29 @@
+device:
+  family: "Cyclone IV E"
+  device: "EP4CE115F29C7"
+  partNumber: "10M50DAF484C7G"
+  clockFreqMHz: 50
+  timingAnalysis: true
+  hardwareVerification: false
+
+pins:
+  - name: "clk"
+    pin: "AF14"
+    ioStandard: "3.3-V LVCMOS"
+    currentStrength: "8MA"
+  - name: "reset"
+    pin: "J2"
+    ioStandard: "3.3-V LVCMOS"
+    pullUp: true
+  - name: "data_in"
+    pin: "K1"
+    ioStandard: "3.3-V LVCMOS"
+  - name: "data_out"
+    pin: "L1"
+    ioStandard: "3.3-V LVCMOS"
+    currentStrength: "12MA"
+
+optimizationTechnique: "BALANCED"
+powerEstimation: false
+topModule: "top_module"
+verilogFile: "project.v"

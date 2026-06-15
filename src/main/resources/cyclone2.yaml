@@ -1,0 +1,29 @@
+device:
+  family: "Cyclone II"
+  device: "EP2C70F672C6"
+  partNumber: null
+  clockFreqMHz: 100
+  timingAnalysis: true
+  hardwareVerification: false
+
+pins:
+  - name: "clk"
+    pin: "E13"
+    ioStandard: "LVTTL"
+    currentStrength: "8MA"
+  - name: "reset"
+    pin: "R2"
+    ioStandard: "LVTTL"
+    pullUp: true
+  - name: "sys_reset"
+    pin: "T3"
+    ioStandard: "LVTTL"
+  - name: "led_status"
+    pin: "W15"
+    ioStandard: "LVTTL"
+    currentStrength: "12MA"
+
+optimizationTechnique: "AREA"
+powerEstimation: false
+topModule: "top_module"
+verilogFile: "cyclone2_design.v"
