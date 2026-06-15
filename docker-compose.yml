@@ -1,0 +1,56 @@
+name: VTR FPGA Implementation CI
+
+on:
+  push:
+    branches: [ main, develop ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  vtr_flow:
+    runs-on: ubuntu-latest
+    # Используем готовый контейнер с установленным тулчейном
+    container:
+      image: chipsalliance/vtr:latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Environment Information
+        run: |
+          echo "Checking tools version"
+          yosys --version
+          vpr --version
+
+      - name: Convert SystemVerilog to Verilog (via sv2v)
+        run: |
+          # Предположим, что sv2v предустановлен в контейнере
+          sv2v src/top.sv --write=src/top.v
+
+      - name: Run VTR Flow
+        run: |
+          # Запуск встроенного скрипта VTR flow
+          # arch.xml должен лежать в вашем репозитории или браться из VTR
+          $VTR_ROOT/vtr_flow/scripts/run_vtr_flow.py \
+            src/top.v \
+            arch/k6_N10_40nm.xml \
+            --temp_dir build_vtr \
+            -vpr_option "--timing_analysis on"
+
+      - name: Check VPR Results
+        run: |
+          # Проверяем, успешно ли сгенерирован финальный лог маршрутизации
+          if grep -q "Circuit successfully routed" build_vtr/vpr.out; then
+            echo "FPGA Routing Successful!"
+          else
+            echo "FPGA Routing Failed!"
+            exit 1
+          fi
+
+      - name: Upload VTR Artifacts
+        if: always()
+        uses: actions/actions-helper/upload-artifact@v2
+        with:
+          name: vtr-build-logs
+          path: build_vtr/
