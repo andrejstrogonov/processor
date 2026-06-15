@@ -1,0 +1,28 @@
+device:
+  family: "Cyclone IV E"
+  part: "EP4CE22F17C6"
+  top_module: "MyTop"
+  clock_freq_mhz: 100.0
+  clock_signal: "clk"
+
+attributes:
+  # Правила для автоматического добавления атрибутов в SV код
+  rules:
+    - pattern: "my_ram"          # Если имя содержит этот текст
+      type: "ram"
+      ram_style: "M9K"          # Атрибут RAM_STYLE
+
+    - pattern: "critical_reg"   # Критические регистры
+      type: "keep"
+      value: "true"
+
+project:
+  input_sv: "./generated/MyTop.sv"
+  output_sv: "./quartus_ready/MyTop_quartus.sv"
+  output_dir: "./quartus_project"
+
+memories:
+  - name: "my_ram"
+    depth: 256
+    width: 32
+    init_values: [0, 1, 2, 3, 4, 5, 6, 7] # Пример данных

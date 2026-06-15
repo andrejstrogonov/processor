@@ -1,0 +1,11 @@
+<component name="libraryTable">
+  <library name="sbt: com.ovhcloud:sv2chisel_2.13:0.1.0-SNAPSHOT:jar" external-system-id="SBT">
+    <CLASSES>
+      <root url="jar://$USER_HOME$/AppData/Local/Coursier/cache/v1/https/s01.oss.sonatype.org/content/repositories/snapshots/com/ovhcloud/sv2chisel_2.13/0.1.0-SNAPSHOT/sv2chisel_2.13-0.1.0-SNAPSHOT.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="jar://$USER_HOME$/AppData/Local/Coursier/cache/v1/https/s01.oss.sonatype.org/content/repositories/snapshots/com/ovhcloud/sv2chisel_2.13/0.1.0-SNAPSHOT/sv2chisel_2.13-0.1.0-SNAPSHOT-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

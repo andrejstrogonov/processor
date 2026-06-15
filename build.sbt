@@ -19,3 +19,12 @@ resolvers ++= Seq(
 // For simpler usage, sv2chisel minor version is aligned on chisel stack minor version: x.5.x
 libraryDependencies += "com.ovhcloud" %% "sv2chisel-helpers" % "0.5.0"
 libraryDependencies += "com.ovhcloud" %% "sv2chisel" % "0.1.0-SNAPSHOT"
+libraryDependencies ++= Seq(
+  "org.yaml" % "snakeyaml" % "2.2",                    // Для YAML
+  "com.github.scopt" %% "scopt" % "4.1.0",             // CLI parsing
+  "org.scalatest" %% "scalatest" % "3.2.17" % Test,   // Unit tests
+  "org.openjfx" % "javafx-controls" % "17.0.2",        // UI
+  "org.openjfx" % "javafx-fxml" % "17.0.2"
+)
+fork := true
+javaOptions += "--module-path /path/to/javafx/lib --add-modules javafx.controls,javafx.fxml"
