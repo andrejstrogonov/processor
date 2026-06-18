@@ -68,7 +68,7 @@ class DSP48E1(
   io.P := pReg.asUInt
 }
 
-object GenerateDSP48E1Verilog {
+object GenerateDSP48E1Verilog{
   def main(args: Array[String]): Unit = {
     (new ChiselStage).emitVerilog(new DSP48E1(), Array("-o", "generated"))
   }
