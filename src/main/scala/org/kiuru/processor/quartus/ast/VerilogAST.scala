@@ -206,3 +206,8 @@ case class CaseStatement(
 ) extends VerilogNode {
   override def nodeType: String = "CaseStatement"
 }
+sealed trait Token {
+  def value: String
+  def line: Int
+  def col: Int
+}
