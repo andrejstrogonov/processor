@@ -1,4 +1,4 @@
-package org.kiuru.configurationalLogicBlock
+package org.kiuru.processor
 
 import logger._
 import sv2chisel.{Driver, Project, TranslationOptions}

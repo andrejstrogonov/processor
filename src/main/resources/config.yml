@@ -8,6 +8,7 @@
   basePath: "src/main/resources/project/hdl" #base path of files to be translated, optional
   files: #list of files to be translated into chisel, at least one file is required
     - sha.sv
+    - DSP48E1.sv
     
   translationOptions:
     LegalizeParamDefaults:
