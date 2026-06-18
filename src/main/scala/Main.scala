@@ -14,5 +14,4 @@ object Main extends App {
 
   Driver.emitChisel(project, TranslationOptions(), "chisel_gen")
 
-
 }
