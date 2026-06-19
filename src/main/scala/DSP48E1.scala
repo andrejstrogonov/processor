@@ -35,9 +35,9 @@ class DSP48E1(
   // unify to SInt of sufficient width
   val multWidth = AWidth + BWidth
   val mult_s = Wire(SInt((multWidth).W))
-  when (signedMul.asBool) {
+  when(signedMul.asBool) {
     mult_s := multSigned
-  } .otherwise {
+  }.otherwise {
     // cast unsigned mult to SInt (positive)
     mult_s := multUnsigned.asSInt
   }
@@ -51,25 +51,42 @@ class DSP48E1(
   c_ext2 := c_ext.asTypeOf(SInt(aluWidth.W))
 
   val alu_res = Wire(SInt(aluWidth.W))
-  when (doSub.asBool) {
+  when(doSub.asBool) {
     alu_res := mult_ext - c_ext2
-  } .otherwise {
+  }.otherwise {
     alu_res := mult_ext + c_ext2
   }
 
   // pipeline register (single stage) with CE and synchronous reset
   val pReg = RegInit(0.S(PWidth.W))
-  when (io.RST) {
+  when(io.RST) {
     pReg := 0.S
-  } .elsewhen (io.CE) {
+  }.elsewhen(io.CE) {
     pReg := alu_res.asSInt
   }
 
   io.P := pReg.asUInt
 }
 
-object GenerateDSP48E1Verilog{
+
+object GenerateDSP48E1Verilog {
   def main(args: Array[String]): Unit = {
-    (new ChiselStage).emitVerilog(new DSP48E1(), Array("-o", "generated"))
+
+    // Путь для генерации файлов
+    val targetDir = "generated"
+
+    // Аргументы для компилятора Chisel/FIRRTL
+    val compilerArgs = Array(
+      "--target-dir", targetDir,
+      "-X", "verilog"
+    )
+
+    println(s"Starting Verilog generation in directory: $targetDir...")
+
+    // Используем стабильный высокоуровневый метод генерации вместо stage.execute
+    (new ChiselStage).emitVerilog(new DSP48E1(), compilerArgs)
+
+
+    println("Verilog execution completed successfully.")
   }
 }
